@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <form  action="/patient-update" method="POST" style="width: 400px;" >
+        <h1 class="container">Sửa thông tin bệnh nhân</h1>
+        <div class="form-group container" hidden>
+          <label for="CMND">Số CMND:</label>
+          <input type="text" class="form-control" id="CMND" name = "CMND" value="<%= patient.CMND %>">
+        </div>
+        <div class="form-group container" >
+          <label for="hoten">Họ tên:</label>
+          <input type="text" class="form-control" id="hoten" name = "hoten" value="<%= patient.Hovaten%>">
+        </div>
+        <div class="form-group container">
+          <label for="ngaysinh">Ngày sinh:</label>
+          <input type="date" class="form-control" id="ngaysinh" name = "ngaysinh" value="<%= date%>">
+        </div>
+        <div class="form-group container" name="gioitinh">Giới tính :  
+          <label class="radio-inline mr-4 ml-4"><input type="radio"  name="gioitinh" value="Nam" <%=patient.Gioitinh==='Nam'
+            ? 'checked' : '' %>>Nam</label>
+          <label class="radio-inline "><input type="radio"  name="gioitinh" value="Nữ" <%=patient.Gioitinh==='Nữ'
+            ? 'checked' : '' %>>Nữ</label>
+        </div>
+        <div class="form-group container">
+          <label for="diachi">Địa chỉ:</label>
+          <input type="text" class="form-control" id="diachi" name = "diachi" value="<%= patient.Diachi%>">
+        </div>
+        <div class="form-group container">
+          <label for="sdt">SĐT:</label>
+          <input type="text" class="form-control" id="sdt" name = "sdt" value="<%= patient.SDT %>">
+        </div>
+        <div class="form-group container">
+            <button type="submit" class="btn btn-primary ">Sửa</button>
+        </div>   
+    </form>
+</body>
+</html>
