@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+    <form  action="/test-update" method="POST" style="width: 400px;" >
+        <h1 class="container">Sửa thông tin khám bệnh</h1>
+        <div class="form-group container">
+            <label for="Masoxetnghiem">Mã số xét nghiệm: </label>
+            <input type="text" class="form-control" id="Masoxetnghiem" name = "Masoxetnghiem" value="<%= test.Masoxetnghiem %>" required readonly>
+        </div>
+        <div class="form-group container ">
+            <label for="CMND">CMND:</label>
+            <select class="form-control" name="CMND" id ="CMND" >
+                <option value="<%= test.CMND %>"><%= test.CMND %></option>
+                <%  for(let i = 0; i < patient.length ; i++) { %>
+                    <%  if(patient[i].CMND !== test.CMND ){ %>                       
+                        <option value="<%= patient[i].CMND %>"><%= patient[i].CMND %></option>
+                        <% } %>
+                    <% } %>
+            </select>
+        </div>
+        <div class="form-group container ">
+            <label for="Donvilaymau">Đơn vị lấy mẫu:</label>
+            <select class="form-control" name="Donvilaymau" id ="Donvilaymau" >
+                <option value="<%= test.Donvilaymau %>"><%= test.Donvilaymau %></option>
+                <% for(let i = 0; i < doctor.length; i++) { %>
+                    <%  if(doctor[i].Donvilaymau !== test.Donvilaymau){ %>
+                        <option value="<%= doctor[i].Donvilaymau %>"><%= doctor[i].Donvilaymau %></option>
+                        <% } %>
+                  <% } %>
+            </select>
+        </div>
+        <div class="form-group container ">
+            <label for="Loaixetnghiem">Loại xét nghiệm:</label>
+            <select class="form-control" name="Loaixetnghiem" id ="Loaixetnghiem">
+              <option value="Test nhanh SARS-COV-2" <%=test.Loaixetnghiem==='Test nhanh SARS-COV-2' ? 'selected' : '' %>>Test nhanh SARS-COV-2</option>
+              <option value="Xét nghiệm máu" <%=test.Loaixetnghiem==='Xét nghiệm máu' ? 'selected' : ''%>>Xét nghiệm máu</option>
+            </select>
+        </div>
+        <div class="form-group container ">
+            <label for="Benhphamthuthap">Bệnh phẩm thu thập:</label>
+            <select class="form-control" name="Benhphamthuthap" id ="Benhphamthuthap">
+              <option value="Dịch tỵ hầu" <%=test.Benhphamthuthap==='Dịch tỵ hầu' ? 'selected' : '' %>>Dịch tỵ hầu</option>
+              <option value="Mẫu máu" <%=test.Benhphamthuthap==='Mẫu máu' ? 'selected' : '' %>>Mẫu máu</option>
+            </select>
+          </div>
+        <div class="form-group container" >
+        <label for="Lanxetnghiem">Lần xét nghiệm:</label>
+        <input type="number" class="form-control" id="Lanxetnghiem" name = "Lanxetnghiem" value="<%= test.Lanxetnghiem%>" required min="1" required max="10">
+        </div>
+        <div class="form-group container ">
+            <label for="Tinhtrangmau">Tình trạng mẫu :</label>
+            <select class="form-control" name="Tinhtrangmau" id ="Tinhtrangmau">
+              <option value="Đạt" <%=test.Tinhtrangmau==='Đạt' ? 'selected' : '' %>>Đạt</option>
+              <option value="Không Đạt" <%=test.Tinhtrangmau==='Không Đạt' ? 'selected' : '' %>>Không Đạt</option>
+            </select>
+        </div>
+        <div class="form-group container">
+            <label for="Ngaylaymau">Ngày lấy mẫu:</label>
+            <% var date = new Date().toISOString().substr(0, 10)%>
+            <input type="date" class="form-control" id="Ngaylaymau" name="Ngaylaymau" value="<%= date %>" readonly>
+        </div>
+        <div class="form-group container ">
+            <label for="Ketquaxetnghiem">Kết quả xét nghiệm :</label>
+            <select class="form-control" name="Ketquaxetnghiem" id ="Ketquaxetnghiem">
+              <option value="Âm Tính" <%=test.Ketquaxetnghiem==='Âm Tính' ? 'selected' : '' %>>Âm Tính</option>
+              <option value="Dương tính" <%=test.Ketquaxetnghiem==='Dương tính' ? 'selected' : '' %>>Dương tính</option>
+            </select>
+        </div>
+
+        <div class="form-group container">
+            <button type="submit" class="btn btn-primary ">Sửa</button>
+        </div>   
+    </form>
+</body>
+</html>

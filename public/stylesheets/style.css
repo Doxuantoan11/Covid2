@@ -17,3 +17,21 @@ a {
 .custom-alert-content {
   color: white;
 }
+
+.search-wrapper {
+  margin: 18px;
+  width: 750px;
+}
+
+.btn-search {
+  border-radius: 10px;
+  height: 38px;
+}
+
+.mb {
+  margin-bottom: 20px;
+}
+
+.print {
+  width: 56px;
+}
