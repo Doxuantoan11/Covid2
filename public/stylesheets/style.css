@@ -4,25 +4,24 @@ body {
   box-sizing: border-box;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
+.navbar-nav a {
+  font-size: 20px;
+}
 
 a {
   color: #00B7FF;
 }
-
 .custom-alert-popup {
   background-color: red;
 }
-
 .custom-alert-title,
 .custom-alert-content {
   color: white;
 }
-
 .search-wrapper {
   margin: 18px;
   width: 750px;
 }
-
 .btn-search {
   border-radius: 10px;
   height: 38px;
@@ -35,3 +34,75 @@ a {
 .print {
   width: 56px;
 }
+button{
+  margin-right: 20px;
+}
+/* print page */
+#printableArea {
+padding: 10px 20px;
+box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+border-radius: 5px;
+margin-top: -140px;
+}
+.text-bold {
+  font-weight: bold;
+}
+.print-header-wapper-line1 {
+  display: inline-flex;
+  flex-direction: row;
+  width:100%;
+  justify-content:space-between;
+}
+.header-right {
+  font-size: 20px;
+}
+.header-line2 {
+  margin-right: 70px;
+}
+.data,tr.body-tr td {
+  font-size: 16px;
+  font-weight: bold;
+  color: #1c55aa;
+}
+
+.display-flex-beetween {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.display-flex-row-gap5{
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.white-square{
+  content: "";
+  background-color:#fff;
+  border: 1px solid #000;
+  width: 15px;
+  height: 15px;
+}
+
+.gap2 {
+  display: flex;
+  flex-direction: column;
+  gap: 4px
+}
+.doctor-manager {
+  font-weight: bold;
+  margin-left: 50px;
+  margin-bottom: 5px;
+}
+.doctor {
+  margin-left: 38px;
+}
+
+ @media print {
+  /* Hide the title and time */
+  .print-title,
+  .print-time {
+    display: none;
+  }
+ }

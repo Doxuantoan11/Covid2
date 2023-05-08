@@ -374,26 +374,26 @@ router.post('/search-name', function(req, res) {
 // in thông tin khám bệnh
 router.get('/test-print/:Masoxetnghiem', function(req, res) {
   let Masoxetnghiem = req.params.Masoxetnghiem;
-  // lấy tất cả rows của Benh nhan table
-  let sql_patient =  "SELECT CMND FROM BENHNHAN"
-  let data_patient ="";
-  let query_patient = connection.query(sql_patient,(err,rows) => {
+  
+  let sql = `SELECT * FROM BS_XN_BN LEFT JOIN BACSI on BS_XN_BN.Donvilaymau = BACSI.Donvilaymau  LEFT JOIN BENHNHAN on BS_XN_BN.CMND = BENHNHAN.CMND WHERE Masoxetnghiem =  '${Masoxetnghiem}'`;
+  let query = connection.query(sql,(err,result) => {
     if(err) throw err;
-    data_patient = rows
+    console.log(result[0]);
+    let birth_date = moment(result[0].Ngaythangnamsinh).format('DD-MM-YYYY');
+    let date = moment(result[0].Ngaylaymau).format('DD-MM-YYYY');
+    let dateParts = date.split('-');
+    let day = dateParts[0];
+    let month = dateParts[1];
+    let year = dateParts[2];
+
+    res.render('test-print', {test:result[0],
+                              birth_date:birth_date,
+                              date:date,
+                              day:day,
+                              month:month,
+                              year:year
+                            });
   });
-// lấy tất cả rows của Bacsi table
-let sql_doctor =  "SELECT Donvilaymau FROM BACSI"
-let data_doctor ="";
-let query_doctor = connection.query(sql_doctor,(err,rows) => {
-  if(err) throw err;
-  data_doctor = rows
-});
-// join 3 bảng 
-let sql = "SELECT * FROM BS_XN_BN JOIN BACSI on BS_XN_BN.Donvilaymau = BACSI.Donvilaymau  JOIN BENHNHAN on BS_XN_BN.CMND = BENHNHAN.CMND";
-let query = connection.query(sql,(err,rows) => {
-  if(err) throw err;
-  res.render('test-print', {test:rows,doctor:data_doctor,patient:data_patient});
-});
 });
 
 module.exports = router;

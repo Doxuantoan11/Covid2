@@ -26,14 +26,118 @@
         </ul>
       </div>  
   </nav>
-  <h1>Thông tin khám bệnh sẽ được in theo mẫu sau:</h1>
+  <div class="text-center mt-2"><h1>Thông tin khám bệnh sẽ được in theo mẫu sau:</h1></div>
   <div class="print-wapper d-flex justify-content-center align-items-center " style="height: 100vh">
-      <div id="printableArea" >
-        <h1>Phiếu kêt quả xét nghiệm</h1>
-        <strong>1.Họ và tên.</strong>
-        <div class="hoten-infor">ấdasdasdads</div>
+    <button class="btn btn-primary"onclick="printDiv('printableArea')">In phiếu</button>
+    <div id="printableArea" >
+      <div class="print-header-wapper">
+        <div class="print-header-wapper-line1">
+          <div class="header-left"> <%=test.Donvilaymau%></div>
+          <div class="header-right">Cộng Hoà-Xã hội-Chủ nghĩa-Việt Nam</div>
+        </div>
+        <div class="print-header-wapper-line1 mt-2 mb-5">
+          <div class="header_left">Số: <span class="font-italic data"><%=test.Masoxetnghiem%></span></div>
+          <div class="header-line2">Độc Lập-Tự Do-Hạnh Phúc</div>
+        </div>
       </div>
-      <button onclick="printDiv('printableArea')">In phiếu</button>
+      <div class="title text-center mb-5"><h1>Phiếu kết quả xét nghiệm</h1></div>
+      <div class="mb-2"><strong>1.Họ và tên: </strong> <span class="data"><%=test.Hovaten%></span></div>
+      <div class="display-flex-beetween">
+        <div class="display-flex-row-gap5"> 
+        <div>-Ngày,tháng,năm sinh:</div>
+        <div class="data"><%=birth_date%></div>
+      </div>
+        <div  name="gioitinh">Giới tính :  
+        <label class="radio-inline mr-4 ml-4"><input type="checkbox"  name="gioitinh" value="Nam" <%=test.Gioitinh==='Nam'
+          ? 'checked' : '' %>>Nam</label>
+        <label class="radio-inline "><input type="checkbox"  name="gioitinh" value="Nữ" <%=test.Gioitinh==='Nữ'
+          ? 'checked' : '' %>>Nữ</label>
+      </div>
+      </div>
+      <div class="display-flex-beetween mb-1">
+        <div class="display-flex-row-gap5">
+          <div>-Số CMT/CCCD:</div>
+          <div class="data"><%=test.CMND%></div>
+        </div>
+        <div class="display-flex-row-gap5">
+          <div>-Điện thoại:</div>
+          <div class="data"><%=test.SDT%></div>
+        </div>
+      </div>
+      <div class="display-flex-row-gap5 mb-1">
+        <div>-Địa chỉ:</div> 
+        <div class="data"><%=test.Diachi%></div>
+      </div>
+      <div class="mb-2"><strong>2.Đối tượng xét nghiệm </strong> <span>(Theo CV 6832/SYT-NVY ngày 31/12/2021 của Sở y tế)</span>
+      </div>
+      <div class="person-test">
+        <div class="display-flex-beetween mb-1">
+          <div class="display-flex-row-gap5">
+            <div>a. Ca bệnh giám sát/nghi ngờ</div>
+            <div class="white-square"></div>
+          </div>
+          <div class="display-flex-row-gap5">
+            <div>b. Ca bệnh xác định</div>
+            <div class="white-square"></div>
+          </div>         
+        </div>
+        <div class="display-flex-beetween mb-1">
+          <div class="display-flex-row-gap5">
+            <div>c. Người tiếp xúc gần(F1)</div>
+            <div class="white-square"></div>
+          </div>
+          <div class="display-flex-row-gap5 mb-2">
+            <div>d. Người có nhu cầu XN</div>
+            <div class="white-square"></div>
+          </div>         
+        </div>
+      </div>
+      <div class="display-flex-row-gap5 mb-2">
+        <div class="text-blod">3.Loại xét nghiệm </div> 
+        <div class="data"><%=test.Loaixetnghiem%></div>
+      </div>
+      <div class="display-flex-row-gap5 mb-2">
+        <div class="text-blod">4.Đơn vị lấy mẫu </div> 
+        <div class="data"><%=test.Donvilaymau%></div>
+      </div>
+      <div class="mb-2"><strong>5.Thông tin bệnh phẩm, kết quả xét nghiệm :  </strong> 
+      </div>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Bệnh phẩm thu thập</th>
+            <th scope="col">Lần lấy mẫu</th>
+            <th scope="col">Ngày lấy mẫu</th>
+            <th scope="col">Tình trạng mẫu</th>
+            <th scope="col">Kết quả xét nghiệm</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class = "body-tr">
+            <td><%=test.Benhphamthuthap%></td>
+            <td><%=test.Lanxetnghiem%></td>
+            <td><%=date%></td>
+            <td><%=test.Tinhtrangmau%></td>
+            <td><%=test.Ketquaxetnghiem%></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="display-flex-beetween mt-3">
+        <div class="text-bold mt-2">
+          <div class="mb-2">Bác sĩ xét nghiệm:</div>
+          <div class="data"><%=test.Bacsixetnghiem%></div>
+        </div>
+        <div class="gap2">
+          <div class="doctor-test-date">
+            Hải phòng, ngày <span class="data"> <%=day%></span> tháng <span class="data"> <%=month%></span>   năm <span class="data"> <%=year%></span> 
+          </div>
+          <div class="doctor-manager">Lãnh đạo đơn vị
+          </div>
+          <div class="data doctor"><%=test.Lanhdaodonvi%>
+          </div>
+        </div>
+      </div>
+    </div>   
   </div>
   
   <script>
@@ -42,6 +146,7 @@
     var originalContents = document.body.innerHTML;
   
     document.body.innerHTML = printContents;
+
   
     window.print();
   
